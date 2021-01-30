@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     float mx;
 
+    [HideInInspector] public bool isFacingRight = true;
     
     private void Update() {
         mx = Input.GetAxisRaw("Horizontal");
@@ -34,10 +35,12 @@ public class PlayerMovement : MonoBehaviour
         if (mx > 0f)
         {
             transform.localScale = new Vector3(0.5f, 0.5f, 0f);
+            isFacingRight = true;
         }
         else if (mx < 0f)
         {
             transform.localScale = new Vector3(-0.5f, 0.5f, 0f);
+            isFacingRight = false;
         }
 
         anim.SetBool("isGrounded", IsGrounded());
